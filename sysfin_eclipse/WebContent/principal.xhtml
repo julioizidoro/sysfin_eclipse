@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>SysFIN</title>
+        <link href="resources/css/css.css" rel="stylesheet" media="screen" />
+        <link href="../../resources/css/css.css" rel="stylesheet" media="screen" />
+        
+    </h:head>
+
+    <h:body>
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+            <img src="resources/img/ajax-loader.gif" />
+        </p:dialog>
+            <h:form>
+                <div id="tudo">
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <tr>
+            <td><table aling="center" width="00" border="0" cellpadding="0" cellspacing="0"> 
+                    <tr>
+                        <td><img src="resources/img/logo.png" width="50%" height="20%" class="logo"/>
+                            <h:panelGrid columns="2" cellpadding="1" class="usuariologado">
+                                <p:outputLabel value="Usuário:"  class="tabelaRecebimento"/> 
+                                <p:outputLabel value="#{UsuarioLogadoBean.usuario.nome}" /> 
+                                <p:outputLabel value="Unidade:"  class="tabelaRecebimento"/> 
+                                <p:outputLabel value="#{UsuarioLogadoBean.nomeCliente}"/> 
+                            </h:panelGrid><br></br><br></br></td>
+                    </tr>
+                </table></td></tr><br></br>
+        <p:menubar class="menu">
+            <p:submenu label="Cadastro" >
+                <p:menuitem class="submenu" value="Cliente" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Banco" action="#{menuMB.banco()}" update="growl"/>
+                <p:menuitem class="submenu" value="Tipo Plano de Contas" action="#{menuMB.tipoPlanoContas()}" update="growl"/>
+                <p:menuitem class="submenu" value="Plano de Contas" action="#{menuMB.planoContas()}" update="growl"/>
+                <p:menuitem class="submenu" value="Produto" action="#{menuMB.produto()}" update="growl"/>
+                <p:menuitem class="submenu" value="TIpo de Usuário" action="#{menuMB.usuario()}" update="growl"/>
+            </p:submenu>
+
+            <p:submenu label="Relatórios" >
+                <p:menuitem class="submenu" value="Contas a Pagar" action="#{menuMB.relatorioContasPagar()}" update="growl"/>
+                <p:menuitem class="submenu" value="Contas Receber" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Conciliação Bancária" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Fluxo de Caixa" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Pagamentos" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Vendas" action="#{menuMB.relatorioVenda()}" update="growl"/>
+            </p:submenu>
+        </p:menubar>
+        
+        <p:stack  expanded="false" icon="resources/img/stack.png">
+            <p:menuitem value="Contas a Pagar" icon="resources/img/finpagar.png" action="#{menuMB.contasPagar()}"  update="growl"/>
+            <p:menuitem value="Contas a Receber" icon="resources/img/finreceber.png" action="#{menuMB.contasReceber}" update="growl"/>
+            <p:menuitem value="Outros Lançamentos" icon="resources/img/finbanco.png" action="#{menuMB.outrosLancamento}" update="growl"/>
+            <p:menuitem value="Vendas" icon="resources/img/cashier.png" action="#{menuMB.vendas}" update="growl"/>
+            <p:menuitem value="Inicio" icon="resources/img/inicio_1.jpg" action="#{menuMB.home}" update="growl"/>
+        </p:stack>
+        <br>  </br>
+        <br>  </br>
+    </div>
+                <div id="centro">
+                    <br></br>
+                   <br></br>
+                 
+                  <br></br>
+                    <br></br>
+                      <br></br>
+                </div>
+            </h:form>     
+           
+    </h:body>
+</html>
+

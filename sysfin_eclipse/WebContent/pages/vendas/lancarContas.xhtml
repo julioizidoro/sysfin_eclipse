@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+        <ui:composition template="/WEB-INF/templates/default.xhtml">
+
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                  <br></br>
+                    <p:tabView class="cadastroContasPagar">
+                        <p:tab title="Lançar Contas" >
+                         <h:panelGrid columns="3" cellpadding="5" >
+                            <p:outputLabel value="Data Recebimento" for="dataReceb"  class="left3" />
+                            <p:outputLabel value="Valor a Receber" for="valorReceb"  class="left" />
+                             <p:outputLabel value="Plano de Contas" for="planoContas" class="left1"/> 
+                        </h:panelGrid>
+                         <h:panelGrid columns="3">
+                            <p:calendar id="dataReceb"  pattern="dd/MM/yyyy" mask="true" size="17" maxlength="15" class="left3"/>
+                             <p:inputText id="valorReceb" size="16"  class="left" />
+                             <p:selectOneMenu id="planoContas" class="left4" style="width:160px" >
+                                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                          </p:selectOneMenu>
+                         </h:panelGrid>
+      
+                <h:panelGrid columns="2" cellpadding="5" >
+                     <p:outputLabel value="Tipo de Documento" for="tipoDocumento"  class="left3"/>
+                       <p:outputLabel value="Competência" for="competencia"  class="left9"/>
+                </h:panelGrid>
+                 <h:panelGrid columns="3">
+                   <p:selectOneMenu id="tipoDocumento" class="left3" style="width:150px">
+                                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                <f:selectItem itemLabel="Boleto" itemValue="Boleto" />  
+                                <f:selectItem itemLabel="Guia de Imposto" itemValue="Guia de Imposto" /> 
+                                <f:selectItem itemLabel="Holerite" itemValue="Holerite" />  
+                                <f:selectItem itemLabel="Nota Fiscal" itemValue="Nota Fiscal" />
+                                <f:selectItem itemLabel="Recibo" itemValue="Recibo" />  
+                                <f:selectItem itemLabel="Outros" itemValue="Outros" /> 
+                          </p:selectOneMenu>
+                       <p:inputMask id="competencia" label="competencia"  size="9" mask="99/9999"  class="left" >
+                                </p:inputMask>
+                       <p:commandButton value="Registrar conta a receber" class="pesquisar2"/>
+                 </h:panelGrid>            
+                        </p:tab>
+                    </p:tabView>  
+                    <p:commandButton value="Cadastrar" icon=" ui-icon-plusthick" class="cadastrar"  actionListener="#{mensagem.saveMessagem}" update="growl"/>
+                    <p:commandButton value="Cancelar" icon=" ui-icon-cancel " class="pesquisar2" action="#{ContasPagarMB.cancelar()}" />
+                    <br></br>
+                    <br></br>
+
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+
+

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="../../resources/css/cssteste.css" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body > 
+        <h:form id="idFrmOperacaoUsuario" class="body2" style="font-size: 12px; background-color: #F0FFFF;">
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+                <img src="resources/img/ajax-loader.gif" />
+            </p:dialog>
+            <title id="iUsu" >Operações Usuario</title>
+
+            <div id="centro">
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <br/>
+                <p:outputLabel value="Usuário Cadastrou" for="usuCadastrou"  class="left3" style="margin-left: 0.5%;"/>
+                <p:outputLabel value="Data e Hora" for="dataHora"  class="usuario2" style="margin-left: 52.5%;"/>
+                <h:panelGrid columns="2">
+                    <p:inputText id="usuCadastrou" size="57"  class="left3"  readonly="true" value="#{ContasPagarMB.usuarioCadastrou}"/>
+                    <p:inputText id="dataHora" size="20"  class="left3" readonly="true" value="#{ContasPagarMB.contasPagar.dataHoraCadastrou}"/>
+                </h:panelGrid>
+                <br/>
+                <p:outputLabel value="Usuário Agendou" for="usuAgendou"  class="left3" style="margin-left: 0.5%;"/>
+                <p:outputLabel value="Data e Hora" for="dataHora2"  class="usuariov" style="margin-left: 53.8%;"/>
+                <h:panelGrid columns="2">
+                    <p:inputText id="usuAgendou" size="57"   readonly="true" class="left3" value="#{ContasPagarMB.usuarioAgendou}"/>
+                    <p:inputText id="dataHora2" size="20"  readonly="true" class="left3" value="#{ContasPagarMB.contasPagar.dataHoraAgendou}"/>
+                </h:panelGrid>   
+                <br/>
+                <p:outputLabel value="Usuário Liberou Pagamento" for="usuLibPagamento"  class="left3" style="margin-left: 0.5%;" />
+                <p:outputLabel value="Data e Hora" for="dataHora3"  class="left15" style="margin-left: 44.3%;"/>
+                <h:panelGrid columns="2">
+                    <p:inputText id="usuLibPagamento" size="57"  readonly="true" class="left3" value="#{ContasPagarMB.usuarioBaixou}"/>
+                    <p:inputText id="dataHora3" size="20"  readonly="true" class="left3" value="#{ContasPagarMB.contasPagar.dataHoraLiberou}"/>
+                </h:panelGrid> 
+                <br/>
+                <p:outputLabel value="Usuário autorizou Pagamento" for="usuAutPagamento"  class="left3" style="margin-left: 0.5%;"/>
+                <p:outputLabel value="Data e Hora" for="dataHora4"  class="usuario3" style="margin-left: 42.3%;" />
+                <h:panelGrid columns="2">
+                    <p:inputText id="usuAutPagamento" size="57"  readonly="true" class="left3" value="#{ContasPagarMB.usuarioAutorizou}"/>
+                    <p:inputText id="dataHora4" size="20"  readonly="true" class="left3" value="#{ContasPagarMB.contasPagar.dataHoraAutorizou}"/>
+                </h:panelGrid>  
+                <p:commandLink title="Cancelar" style="margin-left: 90%;text-decoration: none" action="#" >
+                    <img src="../../resources/img/cancelarS.png" width="50" height="50"/>
+                </p:commandLink>
+                <br></br>
+                <br></br>
+
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
+

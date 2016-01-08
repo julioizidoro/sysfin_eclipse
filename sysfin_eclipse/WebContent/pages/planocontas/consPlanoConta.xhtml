@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form id="idfrmplanocontas">
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <p:accordionPanel style="font-size:12px;">
+                        <p:tab title="Pesquisar" titleStyle="background: #3E7D62;color: white">
+
+                            <h:panelGrid columns="6" cellpadding="1">
+                                <p:inputText id="descricao" placeholder="Descrição" size="50" maxlength="100" style="margin-left: 22%" value="#{planoContasMB.planocontas.descricao}" />
+                                <p:selectOneMenu id="modelo"  class="left" style="width:200px"  value="#{planoContasMB.planocontas.idplanoContas}">
+                                    <f:selectItem itemLabel="Modelo" itemValue="0" noSelectionOption="true"/> 
+                                    <f:selectItems value="#{planoContasMB.listarTipoPlanoContas}" var="tipoSelecionado" itemLabel="#{tipoSelecionado.descricao}" itemValue="#{tipoSelecionado.idtipoplanocontas}"/>
+                                </p:selectOneMenu>
+                                <p:commandLink title="Pesquisar"   action="#{planoContasMB.pesquisar()}" update=":idfrmplanocontas:idplanoconta" style="margin-left: 90%" >
+                                    <img src="../../resources/img/pesquisarS.png" width="30" height="30"/>
+                                </p:commandLink>
+                                <p:commandLink title="Limpar"  action="#{planoContasMB.limpar()}" update=":idfrmplanocontas:idplanoconta" style="margin-left: 260%" >
+                                    <img src="../../resources/img/limparS.png" width="30" height="30"/>
+                                </p:commandLink> 
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:accordionPanel>
+                    <br></br>
+                    <legend id="iUsu2" ><b>Consulta Plano de Contas</b>
+                        <p:commandLink title="Novo"  class="fechar" action="#{planoContasMB.novo()}" style="margin-left: 40%;text-decoration: none">
+                            <img src="../../resources/img/adicionarS.png" width="30"/>
+                            <p:ajax event="dialogReturn" listener="#{planoContasMB.retornoDialog}" update=":idfrmplanocontas:idplanoconta"/>
+                        </p:commandLink>
+                    </legend>
+                    <p:dataTable id="idplanoconta" var="planocontas" value="#{planoContasMB.gerarListaPlanoConta()}" rowStyleClass="tabela" class="tabelaselecionar" 
+                                 scrollable="true" scrollHeight="300" style="margin-bottom:20px" selection="#{planoContasMB.planocontas}" selectionMode="single" rowKey="#{planocontas}"> 
+
+
+                        <p:column headerText="Número" style="width:100px">
+                            <h:outputText value="#{planocontas.numeroConta}"/>
+                        </p:column>
+                        <p:column headerText="Descrição" >
+                            <h:outputText  value="#{planocontas.descricao}" />
+                        </p:column>
+                        <p:column headerText="Modelo"  >
+                            <h:outputText value="#{planocontas.tipoplanocontas}"/>
+                        </p:column>
+                        <p:column style="width: 35px">
+                            <p:commandLink title="Editar" style="text-align: center;" action="#{planoContasMB.editar(planoconta)}" update=":idfrmplanocontas:idplanoconta" >
+                                <img src="../../resources/img/editarS.png" width="30" height="30"/>
+                                <p:ajax event="dialogReturn" listener="#{planoContasMB.retornoDialog}" update=":idfrmplanocontas:idplanoconta"/>
+                            </p:commandLink>
+                        </p:column>
+                    </p:dataTable>
+
+                    <br></br>
+                </div>
+            </h:form>     
+
+        </ui:define>
+    </ui:composition>
+</html>
+

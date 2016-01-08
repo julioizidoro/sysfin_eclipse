@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <legend id="iUsu" ><b>Consulta Tipo de Usuário </b></legend>
+                    <p:dataTable id="tipousuario" var="tipousuario" value="#{TipoAcessoMB.listarTipoAcesso}" rowStyleClass="tabela" class="tabelaselecionar" 
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                 paginator="true" rows="10" style="margin-bottom:20px"> 
+
+                        <p:column headerText="Código" style="width:60px"  styleClass="alinhar">
+                            <h:outputText value="#{tipousuario.idtipoacesso}" />
+                        </p:column>
+                        <p:column headerText="Descrição">
+                            <h:outputText value="#{tipousuario.descricao}" />
+                        </p:column>
+                        <p:column style="width:28px">
+                            <p:selectBooleanCheckbox value="#{tipousuario.selecionado}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br></br>
+                    <h:panelGrid columns="10" cellpadding="1" >
+                        <p:commandButton value="Novo" icon=" ui-icon-plus " class="fechar" action="#{TipoAcessoMB.novo()}"/>
+                        <p:commandButton value="Editar" class="export" icon=" ui-icon-pencil" action="#{TipoAcessoMB.editar()}" />
+                    </h:panelGrid>
+                    <br></br>
+                </div>
+            </h:form>     
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <h:panelGrid columns="2" cellpadding="3">
+                        <p:outputLabel value="Unidade" for="unidade" class="unidade"/> 
+                        <p:outputLabel value="Periodo" for="periodo" class="left25"/> 
+                    </h:panelGrid>
+                    <h:panelGrid columns="5" cellpadding="1">
+                        <p:inputText id="unidade" size="38" class="unidade" value="#{RelatoriosContasPagarMB.clienteMB.cliente.nomeFantasia}"  readonly="true"/>       
+                        <p:inputText id="periodo" size="30" class="left4" value="#{RelatoriosContasPagarMB.periodo}" />                 
+                    </h:panelGrid>
+                    <br></br>
+                    <legend id="iUsu2" ><p:outputLabel value="#{RelatoriosContasPagarMB.titulo}"  class="tituloRelatorio"/> </legend>
+                    <p:dataTable id="relatorioFluxoCaixa" var="fluxoCaixa" value="#{RelatoriosContasPagarMB.listaFluxoCaixa}" rowStyleClass="tabela" class="tabelacontas" 
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                                 paginator="true" rows="10" style="margin-bottom:20px"> 
+
+                        <p:column headerText="Data" style="width: 75px;" >
+                            <h:outputText value="#{fluxoCaixa.data}"  >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />  
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Valor Contas Receber"  >
+                            <h:outputText value="#{fluxoCaixa.valorContasReceber}">
+                                <f:convertNumber currencySymbol="" type="currency"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Valor Contas Pagar"  style="width: 70px;"   styleClass="alinharCenter" >
+                            <h:outputText value="#{fluxoCaixa.valorContasPagar}">
+                                <f:convertNumber currencySymbol="" type="currency"/>
+                            </h:outputText>   
+                        </p:column>
+                            <p:column headerText="Saldo"   style="width: 120px;" >
+                                <h:outputText value="#{fluxoCaixa.saldo}" >
+                                    <f:convertNumber currencySymbol="" type="currency"/>  
+                                </h:outputText>
+                            </p:column>
+                    </p:dataTable>                  
+                    <br></br>
+                    <h:panelGrid columns="10" cellpadding="1" >
+                        <h:commandLink>
+                            <p:commandButton value="Exportar" class="cadastrar"  icon="ui-icon-document" action="#{RelatoriosContasPagarMB.cancelar}" />
+                            <p:dataExporter type="xls" target="relatorioContasPagar" fileName="Relatario" />
+                        </h:commandLink>
+                        <p:commandButton value="Cancelar" class="export" icon=" ui-icon-trash " action="#{RelatoriosContasPagarMB.cancelar}" />
+                    </h:panelGrid>
+                    <br></br>
+                </div>
+            </h:form>     
+        </ui:define>
+    </ui:composition>
+</html>
+

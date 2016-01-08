@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+     <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form enctype = "multipart / form-data" >
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <br></br>
+                    <p:tabView class="cadastroContasPagar">
+                        <p:tab title="Cadastro de Produto" >
+                           <h:panelGrid columns="2" cellpadding="3">
+                                <p:outputLabel value="Descrição" for="descricao"  class="left" /> 
+                                <p:outputLabel value="Código SysTM" for="codigosystm"  class="cliente" /> 
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:inputText id="descricao"   size="50" maxlength="100" class="left"  value="#{ProdutoMB.produto.descricao}" />
+                                <p:inputText id="codigosystm" size="23" maxlength="100" class="left" value="#{ProdutoMB.produto.codigosystm}"/>
+                            </h:panelGrid>                   
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="Confirmar" icon=" ui-icon-check " class="cadastrarrelatorio"  actionListener="#{mensagem.saveMessagem}" update="growl" ajax="false" action="#{ProdutoMB.salvar()}" />
+                    <p:commandButton value="Cancelar" icon=" ui-icon-cancel " class="pesquisar2"  action="#{ProdutoMB.cancelar()}"/>
+                    <br></br>
+                    <br></br>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+

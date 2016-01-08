@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+
+        <ui:define name="corpo">
+            <h:form id="idfrmbanco">
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <p:accordionPanel style="font-size:12px;">
+                        <p:tab title="Pesquisar" titleStyle="background: #3E7D62;color: white">
+                            <h:panelGrid columns="7">
+                                <p:selectOneMenu id="idcbcliente" value="#{bancoMB.cliente}" style="width: 300px;margin-left: 12%"
+                                                 converter="ClienteConverter"  filter="true" filterMatchMode="startsWith" panelStyle="width:290px" >
+                                    <f:selectItem itemLabel="Cliente" itemValue="0" noSelectionOption="true"/>
+                                    <f:selectItems value="#{bancoMB.listaCliente}" var="clienteselecionado"  itemLabel="#{clienteselecionado.nomeFantasia}" itemValue="#{clienteselecionado}" />
+                                    <f:attribute name="listaCliente" value="#{bancoMB.listaCliente}"/>
+                                    <p:ajax event="change"  listener="#{bancoMB.gerarListaBanco}" update=":idfrmbanco:idconsultabanco"/>
+                                </p:selectOneMenu>
+
+                               
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:accordionPanel>
+                     <legend id="iUsu2" style=" -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" ><b>Consulta de Banco </b>
+                         <p:commandLink title="Novo"  class="fechar" action="#{bancoMB.novoBanco()}" style="margin-left: 40%">
+                            <img src="../../resources/img/adicionarS.png" width="30"/>
+                            <p:ajax event="dialogReturn" listener="#{bancoMB.retornoDialog}" update=":idfrmbanco:idconsultabanco"/>
+                        </p:commandLink>
+                    </legend>
+                    <p:dataTable id="idconsultabanco" var="banco" value="#{bancoMB.listaBanco}" rowStyleClass="tabela" class="tabelaselecionar" 
+                                 scrollable="true" scrollHeight="300" style="margin-bottom:20px" > 
+
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{banco.nome}" />
+                        </p:column>
+                        <p:column headerText="Agencia" style="width:60px">
+                            <h:outputText   value="#{banco.agencia}"/>
+                        </p:column>
+                        <p:column headerText="Conta"  style="width:60px">
+                            <h:outputText value="#{banco.conta}"/>
+                        </p:column>
+                        <p:column headerText="Gerente"  style="width:180px">
+                            <h:outputText value="#{banco.gerente}"/>
+                        </p:column>
+                        <p:column headerText="Gerente e-mail"  style="width:180px">
+                            <h:outputText value="#{banco.emailGerente}"/>
+                        </p:column>
+                        <p:column style="width: 35px">
+                            <p:commandLink title="Editar" style="text-align: center;" action="#{bancoMB.editar(banco)}" update=":idfrmbanco:idconsultabanco" >
+                                <img src="../../resources/img/editarS.png" width="30" height="30"/>
+                                <p:ajax event="dialogReturn" listener="#{bancoMB.retornoDialog}" update=":idfrmbanco:idconsultabanco"/>
+                            </p:commandLink>
+                        </p:column>
+                    </p:dataTable>
+                    <br></br>
+
+                </div>
+            </h:form>     
+
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="../../resources/css/cssteste.css" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body >
+
+        <h:form id="frmidCadBanco" class="body2" style="font-size: 12px;background: #F0FFFF">
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <img src="resources/img/ajax-loader.gif" />
+            </p:dialog>
+
+            <title  >Banco</title>
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <br></br>
+           
+            <p:outputLabel value="Nome" for="nome"  style="margin-left: 5.5%" />
+                <p:outputLabel value="Número" for="numero"  style="margin-left: 62%" />
+           
+            <h:panelGrid columns="3">
+                <p:inputText id="nome" style="width:  200%;margin-left: 15%"  value="#{cadBancoMB.banco.nome}"/>
+                <p:inputText id="numero" style="width:  30%;margin-left: 60%"    value="#{cadBancoMB.banco.numeroBanco}"/>
+            </h:panelGrid>
+
+        
+                <p:outputLabel value="Nº Agencia" for="nAgencia"  style="margin-left: 5.5%"/>
+                <p:outputLabel value="Nº Conta" for="nConta"  style="margin-left: 14.5%"/>
+                <p:outputLabel value="Chave" for="chave"  style="margin-left: 15%"/>
+                <p:outputLabel value="Senha" for="senha"  style="margin-left: 19%"/>
+            
+            <h:panelGrid columns="4">
+                <p:inputText id="nAgencia"  style="margin-left: 19%;width: 60%"  value="#{cadBancoMB.banco.agencia}"/>
+                <p:inputText id="nConta" style="margin-left: 10%;width: 60%"  value="#{cadBancoMB.banco.conta}"/>
+                <p:inputText id="chave" style="margin-left: 10%;width: 60%" value="#{cadBancoMB.banco.cahve}"/>
+                <p:inputText id="senha" style="margin-left: 10%;width: 60%"  value="#{cadBancoMB.banco.senha}"/>
+            </h:panelGrid>
+            
+                <p:outputLabel value="Nome do Gerente" for="nomegerente"  style="margin-left: 5.5%" />
+           
+            <h:panelGrid columns="3">
+                <p:inputText id="nomegerente" size="97"  style="margin-left: 5%;width: 88%"  value="#{cadBancoMB.banco.gerente}"/>
+            </h:panelGrid>
+            
+                <p:outputLabel value="E-mail do Gerente" for="emailgerente"  style="margin-left: 5.5%"/>
+            
+            <h:panelGrid columns="3">
+                <p:inputText id="emailgerente" size="97"  style="margin-left: 5%;width: 88%" value="#{cadBancoMB.banco.emailGerente}"/>
+            </h:panelGrid>
+
+                <p:commandLink title="Confirmar" style="margin-left: 76%;text-decoration: none" actionListener="#{mensagem.saveMessagem}"  action="#{cadBancoMB.salvar()}" >
+                <img src="../../resources/img/confirmarS.png" width="50" height="50"/>
+            </p:commandLink>
+                <p:commandLink title="Cancelar" style="margin-left: 2%;text-decoration: none" action="#{cadBancoMB.cancelar()}" >
+                <img src="../../resources/img/cancelarS.png" width="50" height="50"/>
+            </p:commandLink>
+            <br></br>
+            <br></br>
+
+        </h:form>
+    </h:body>
+
+</html>

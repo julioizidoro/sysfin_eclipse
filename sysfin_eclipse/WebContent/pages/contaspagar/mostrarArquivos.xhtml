@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+
+                    <br></br>
+                    <br></br>
+                    <p:tabView class="mostrararquivos">
+                        <p:tab title="Mostrar Arquivos" >
+                            <h:panelGrid columns="2" cellpadding="5" >
+                                <p:outputLabel value="Arquivo 01" for="arquivo1"  class="left3" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <p:inputText id="arquivo1" size="65"  class="left3" value="#{ContasPagarMB.nomeArquivo.nomearquivo01}"/>
+                                <p:commandButton value="Salvar"   icon=" ui-icon-plusthick">
+                                    <p:fileDownload value="#{ContasPagarMB.file01}" />
+                                </p:commandButton>
+                            </h:panelGrid>     
+                            <h:panelGrid columns="2" cellpadding="5" >
+                                <p:outputLabel value="Arquivo 02" for="arquivo2"  class="left3" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <p:inputText id="arquivo2" size="65"  class="left3" value="#{ContasPagarMB.nomeArquivo.nomearquivo02}"/>
+                                <p:commandButton value="Salvar"  ajax="false" icon=" ui-icon-plusthick">
+                                    <p:fileDownload value="#{ContasPagarMB.file02}" />
+                                </p:commandButton>
+                            </h:panelGrid>     
+
+                        </p:tab>
+                    </p:tabView>  
+                    <p:commandButton value="Fechar"  class="fechar" action="#{ContasPagarMB.cancelar()}" />
+
+                    <br></br>
+                    <br></br>
+
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+
+

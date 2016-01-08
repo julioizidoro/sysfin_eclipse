@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+       <ui:composition template="/WEB-INF/templates/default.xhtml">
+
+        <ui:define name="corpo">
+            <h:form enctype = "multipart / form-data" >
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <br></br>
+                    <p:tabView class="cadastroContasPagar">
+                        <p:tab title="Relatório de Vendas" >
+                            <h:panelGrid columns="2" cellpadding="5" >
+                                <p:outputLabel value="Unidade" for="unidade"  class="left3"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <p:inputText id="unidade" size="66"  class="left3"  value="#"/>
+                                <p:commandButton value="Selecionar" class="selecionar" action="#{VendasMB.selecionarUnidade()}"/>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="7" cellpadding="3">
+                                <p:outputLabel value="Data Inicio" for="dataIni" class="left3" /> 
+                                <p:outputLabel value="Data Fínal" for="dataFim" class="left4"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="5" cellpadding="1">
+                                <p:calendar id="dataIni"  pattern="dd/MM/yyyy" mask="true" size="11" maxlength="15" class="left3" value="">
+                                    <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                                </p:calendar>
+                                <p:calendar id="dataFim"  pattern="dd/MM/yyyy" mask="true" size="11" maxlength="15" class="left3"  value="">
+                                    <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                                </p:calendar>
+                            </h:panelGrid>                   
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="Confirmar" icon=" ui-icon-check " class="cadastrarrelatorio"  actionListener="#{mensagem.saveMessagem}" update="growl" ajax="false" action="#" />
+                    <p:commandButton value="Excel" icon="ui-icon-document" class="excel" action="#"/>
+                    <p:commandButton value="Cancelar" icon=" ui-icon-cancel " class="pesquisar2"  action="#"/>
+                    <br></br>
+                    <br></br>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+

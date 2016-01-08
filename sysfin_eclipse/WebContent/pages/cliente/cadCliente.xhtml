@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="../../resources/css/cssteste.css" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body> 
+        <h:form id="idFrmCadCliente" class="body2" style="font-size: 12px; background-color: #F0FFFF;">
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+                <img src="resources/img/ajax-loader.gif" />
+            </p:dialog>
+            <div id="centro">
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <br></br>
+                <title>Dados de Identificação</title>
+                <br/>
+                <p:outputLabel value="Razão Social" for="razaosocial"  class="left" style="margin-left: 0.5%;"/> 
+                <p:outputLabel value="CNPJ" for="cnpj"  class="cliente" style="margin-left: 51%;"/> 
+                <h:panelGrid columns="2" >
+                    <p:inputText id="razaosocial"   size="50" maxlength="100" class="left"  value="#{cadClienteMB.cliente.razaoSocial}" />
+                    <p:inputMask id="cnpj" size="23" maxlength="100" class="left" mask="99.999.999/9999-99" value="#{cadClienteMB.cliente.cnpj}"/>
+                </h:panelGrid>
+                <br/>
+                    <p:outputLabel value="Nome Fantasia" for="nomefantasia"  class="left" style="margin-left: 0.5%;"/> 
+                    <p:outputLabel value="Telefone" for="telefone"  class="cliente2" style="margin-left: 49.3%;"/> 
+                <h:panelGrid columns="2" >
+                    <p:inputText id="nomefantasia"   size="50" maxlength="100" class="left"  value="#{cadClienteMB.cliente.nomeFantasia}"/>
+                    <p:inputMask id="telefone" size="23" maxlength="100" class="left" mask="(99)9999-9999" value="#{cadClienteMB.cliente.foneFixo}"/>
+                </h:panelGrid>
+                    <br/>
+                    <p:outputLabel value="Tipo Logradouro"  class="left" style="margin-left: 0.8%;"/>
+                    <p:outputLabel value="Logradouro" for="logra" class="left" style="margin-left: 11.5%;"/>
+                    <p:outputLabel value="Número" for="numero"  class="cliente3" style="margin-left: 38.8%;"/>
+                <h:panelGrid columns="4" >
+                    <p:selectOneMenu id="tipologra" value="#{cadClienteMB.cliente.tipoLogradouro}" style="width:154px" class="left">
+                        <f:selectItem itemLabel="Selecione" itemValue="sn" noSelectionOption="true"/> 
+                        <f:selectItem itemLabel="Rua" itemValue="Rua" />  
+                        <f:selectItem itemLabel="Rodivia" itemValue="Rodivia" />  
+                        <f:selectItem itemLabel="Estrada" itemValue="Estrada" />  
+                        <f:selectItem itemLabel="Servidão" itemValue="Servidão" />  
+                        <f:selectItem itemLabel="BR" itemValue="BR" />       
+                    </p:selectOneMenu>
+                    <p:inputText id="logra"   size="38"  class="" value="#{cadClienteMB.cliente.logradouro}"/>
+                    <p:inputMask id="numero"   size="12" required="true" class="" value="#{cadClienteMB.cliente.numero}" mask="?999999999"/>
+                </h:panelGrid> 
+                    <br/>
+                    <p:outputLabel value="Complemento" for="comple" class="left" style="margin-left: 0.5%;"/>
+                    <p:outputLabel value="Bairro" for="bairro" class="left30" style="margin-left: 48.3%;"/>
+                <h:panelGrid columns="6" >   
+                    <p:inputText id="comple"  size="48" class="left" value="#{cadClienteMB.cliente.complemento}"/>
+                    <p:inputText id="bairro" value="#{cadClienteMB.cliente.bairro}"  size="25" class=""/>
+                </h:panelGrid> 
+                    <br/>
+                    <p:outputLabel value="Cidade" for="cidade" class="left" style="margin-left: 0.5%;"/>
+                    <p:outputLabel value="Estado" class="usuario3" style="margin-left: 40%;"/>
+                    <p:outputLabel value="CEP" for="cep" class="left15" style="margin-left: 24%;"/>
+                <h:panelGrid columns="3">
+                    <p:inputText id="cidade" value="#{cadClienteMB.cliente.cidade}"  size="35" class="left"/>
+                    <p:selectOneMenu id="estado" value="#{cadClienteMB.cliente.estado}" class="" style="width:182px">
+                        <f:selectItem itemLabel="Selecione o Estado" itemValue="sn" noSelectionOption="true"/> 
+                        <f:selectItem itemLabel="Acre" itemValue="AC" /> 
+                        <f:selectItem itemLabel="Alagoas" itemValue="AL" /> 
+                        <f:selectItem itemLabel="Amapá" itemValue="AP" />  
+                        <f:selectItem itemLabel="Amazonas" itemValue="AM" />  
+                        <f:selectItem itemLabel="Bahia" itemValue="BA" />  
+                        <f:selectItem itemLabel="Ceará" itemValue="CE" />  
+                        <f:selectItem itemLabel="Distrito Federal" itemValue="DF" />  
+                        <f:selectItem itemLabel="Espirito Santo" itemValue="ES" />  
+                        <f:selectItem itemLabel="Goiás" itemValue="GO" />  
+                        <f:selectItem itemLabel="Maranhão" itemValue="MA" />  
+                        <f:selectItem itemLabel="Mato Grosso" itemValue="MT" />  
+                        <f:selectItem itemLabel="Mato Grosso do Sul" itemValue="MS" />  
+                        <f:selectItem itemLabel="Minas Gerais" itemValue="MG" />  
+                        <f:selectItem itemLabel="Pará" itemValue="PA" />  
+                        <f:selectItem itemLabel="Paraíba" itemValue="PB" />  
+                        <f:selectItem itemLabel="Paraná" itemValue="PR" />  
+                        <f:selectItem itemLabel="Pernambuco" itemValue="PE" />  
+                        <f:selectItem itemLabel="Piauí" itemValue="PI" />  
+                        <f:selectItem itemLabel="Rio de Janeiro" itemValue="RJ" />  
+                        <f:selectItem itemLabel="Rio Grande do Norte" itemValue="RN" />  
+                        <f:selectItem itemLabel="Rio Grande do Sul" itemValue="RS" />  
+                        <f:selectItem itemLabel="Rondônia" itemValue="RO" />  
+                        <f:selectItem itemLabel="Roraima" itemValue="RR" />  
+                        <f:selectItem itemLabel="Santa Catarina" itemValue="SC" />  
+                        <f:selectItem itemLabel="São Paulo" itemValue="SP" />  
+                        <f:selectItem itemLabel="Sergipe" itemValue="SE" />  
+                        <f:selectItem itemLabel="Tocantins" itemValue="TO" /> 
+                    </p:selectOneMenu>
+                    <p:inputMask id="cep" size="11" required="true" maxlength="9" class="left1" value="#{cadClienteMB.cliente.cep}" mask="99999-999"/>     
+                </h:panelGrid>
+                    <br/>
+                    <p:outputLabel value="Email" for="email"  class="left" style="margin-left: 0.5%;"/>
+                    <p:outputLabel value="Responsável" for="responsavel"  class="usuario3" style="margin-left: 33%;"/>
+                    <p:outputLabel value="Código SysTM" for="codigoTM"  class="cliente4" style="margin-left: 22.2%;"/>
+                <h:panelGrid columns="3">
+                    <p:inputText id="email"   size="29" maxlength="100"  class="left" value="#{cadClienteMB.cliente.email}"/>
+                    <p:inputText id="responsavel"  size="25" maxlength="100" class="leftMeio2" value="#{cadClienteMB.cliente.administrador}"/>
+                    <p:inputText id="codigoTM"  size="14" maxlength="20" class="leftMeio2" value="#{cadClienteMB.cliente.codigosystm}"/>
+                </h:panelGrid>
+                    <br/>
+                    <p:outputLabel value="Tipo Plano de Conta" for="tipoplanoconta"  class="left" style="margin-left: 0.5%;"/>
+                <h:panelGrid columns="3" >
+                    <p:selectOneMenu id="tipoplanoconta" class="left" style="width:300px"  value="#{cadClienteMB.idTipoPlanoConta}">
+                        <f:selectItem itemLabel="Selecione" itemValue="sn" noSelectionOption="true"/> 
+                        <f:selectItems value="#{cadClienteMB.listarTipoPlanoContas}" var="tipoSelecionado" itemLabel="#{tipoSelecionado.descricao}" itemValue="#{tipoSelecionado.idtipoplanocontas}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                    <p:commandLink title="Confirmar" style="margin-left: 72%;text-decoration: none" actionListener="#{mensagem.saveMessagem}"  action="#{cadClienteMB.salvar()}" >
+                        <img src="../../resources/img/confirmarS.png" width="50" height="50"/>
+                    </p:commandLink>
+                    <p:commandLink title="Cancelar" style="margin-left: 2%;text-decoration: none" action="#{cadClienteMB.cancelar()}" >
+                        <img src="../../resources/img/cancelarS.png" width="50" height="50"/>
+                    </p:commandLink>
+                <br></br>
+            </div>
+        </h:form>
+    </h:body>
+</html>

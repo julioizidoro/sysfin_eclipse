@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <h:panelGrid columns="7" cellpadding="3">
+                        <p:outputLabel value="Unidade:" for="unidade" class="unidade"/> 
+                        <p:outputLabel value="Data Inicial:" for="dataIni" class="pesqcon"/> 
+                        <p:outputLabel value="Data Final:" for="dataFinal" class="left4"/>
+                        <p:outputLabel value="Selecione a  Conta  para Utilização:" for="selConta" class="left4"/> 
+                    </h:panelGrid>
+                    <h:panelGrid columns="6" cellpadding="1">
+                        <p:inputText id="unidade" size="32" maxlength="100" readonly="false" class="unidade" value="#{ClienteMB.cliente.nomeFantasia}" >
+                            <p:ajax event="change" listener="#{OutrosLancamentosMB.carregarListaBanco()}" update="selConta" />  
+                        </p:inputText>    
+                        <p:commandButton value="Selecionar" class="css3button" icon=" ui-icon-arrowthickstop-1-s" action="#{OutrosLancamentosMB.selecionarUnidade()}" process="@this" >
+                        </p:commandButton>
+                        <p:calendar id="dataIni" value="#{OutrosLancamentosMB.dataInicial}" pattern="dd/MM/yyyy" mask="true" size="7" maxlength="15" class="tabelaRecebimento" >
+                            <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                        </p:calendar>
+                        <p:calendar id="dataFinal" value="#{OutrosLancamentosMB.dataFinal}" pattern="dd/MM/yyyy" mask="true" size="8" maxlength="15" class="left6" >
+                            <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                        </p:calendar>
+                        <p:selectOneMenu id="selConta" class="left3" style="width:162px"  value="#{OutrosLancamentosMB.idBanco}">
+                            <f:selectItem itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+                            <f:selectItems value="#{OutrosLancamentosMB.listaBanco}" var="banco" itemLabel="#{banco.nome}" itemValue="#{banco.idbanco}"/>
+                        </p:selectOneMenu> 
+                        <p:commandButton  class="pesquisaroutros" icon=" ui-icon-search " action="#{OutrosLancamentosMB.pesquisar()}" update="@all"  oncomplete="popAprovar.hide();  #{meuBean.objetos}"/>
+                    </h:panelGrid>  
+                    <br></br>
+                    <legend id="iUsu" ><b>Consulta de outros lançamentos </b></legend>
+
+                    <p:dataTable id="outroslanca" var="outroslancamentos" value="#{OutrosLancamentosMB.listarMovimentobancos}" rowStyleClass="tabela" class="tabelaselecionar" 
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                 paginator="true" rows="10" style="margin-bottom:20px"> 
+
+                        <p:column headerText="Data" style="width:80px">
+                            <h:outputText value="#{outroslancamentos.dataCompensacao}">
+                                <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Descrição" >
+                            <h:outputText  value="#{outroslancamentos.descricao}" />
+                        </p:column>
+                        <p:column headerText="Valor Entrada" style="width:90px" styleClass="alinharCenter">
+                            <h:outputText value="#{outroslancamentos.valorEntrada}">
+                                <f:convertNumber currencySymbol="" type="currency"/>
+                            </h:outputText>    
+                        </p:column>
+                        <p:column headerText="Valor Saída"  style="width:90px" styleClass="alinharCenter" >
+                            <h:outputText value="#{outroslancamentos.valorSaida}">
+                                <f:convertNumber currencySymbol="" type="currency"/>
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column style="width:28px">
+                            <p:selectBooleanCheckbox value="#{outroslancamentos.selecionado}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <h:panelGrid columns="3" cellpadding="1" class="">
+                        <p:commandButton value="Lançar" icon=" ui-icon-plus " class="pesquisar3" action="#{OutrosLancamentosMB.novo()}"/>
+                        <p:commandButton value="Editar" class="editar" icon=" ui-icon-pencil" action="#{OutrosLancamentosMB.editar()}"/>
+                        <p:commandButton value="Excluir" class="pesquisar" icon=" ui-icon-trash "  action="#{OutrosLancamentosMB.excluir()}" actionListener="#{mensagem.excluiMessagem()}"  update="@all"  oncomplete="popAprovar.hide();  #{meuBean.objetos}"/>
+                    </h:panelGrid>
+                    <br></br>
+                </div>
+            </h:form>     
+
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+                    <br></br>
+                       <h:panelGrid columns="7" cellpadding="3">
+                             <p:outputLabel value="Unidade" for="unidade" class="unidade"/> 
+                       </h:panelGrid>
+                       <h:panelGrid columns="7" cellpadding="3">
+                           <p:inputText id="unidade" size="45" maxlength="100" class="unidade" value="#{ClienteMB.nomeCliente}"/>
+                           <p:commandButton value="Buscar" class="css3button" action="#{ClienteMB.pesquisarNome()}" update="@all"  oncomplete="popAprovar.hide(); #{meuBean.objetos}"/>
+                       </h:panelGrid>
+                    <legend id="iUsu" ><b>Selecionar Unidade </b></legend> 
+                    <p:dataTable paginator="true" rows="10" var="clientelista" class="tabelaselecionar" value="#{ClienteMB.listaClientes}" rowIndexVar="numero" >
+                          <p:column headerText="Unidade"  >
+                              <h:outputText value="#{clientelista.nomeFantasia}"/>
+                          </p:column>
+                         <p:column style="width:100px">
+                             <p:commandButton value="Selecionar" icon="ui-icon-arrowstop-1-s"  action="#{ClienteMB.selecionarCliente()}">
+                                 <f:param name="id_cliente" value="#{numero}"/>
+                             </p:commandButton>
+                          </p:column>
+                     </p:dataTable>
+                      <br></br>
+                    <br></br>
+                    <br></br>
+                </div>
+            </h:form>     
+           
+        </ui:define>
+    </ui:composition>
+</html>
+

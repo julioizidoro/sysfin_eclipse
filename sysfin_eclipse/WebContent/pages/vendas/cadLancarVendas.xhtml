@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+                       <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                  <br></br>
+                    <p:tabView class="cadastroLancarVenda">
+                        <p:tab title="Dados da Venda" class="tabelaRecebimento" >
+                         <h:panelGrid columns="2" cellpadding="5" >
+                            <p:outputLabel value="Unidade" for="unidade"  class="left3" />
+                        </h:panelGrid>
+                         <h:panelGrid columns="2">
+                            <p:inputText id="unidade" size="50"  class="left3" required="true" requiredMessage="Campo unidade preenchimento Obrigatório"/>
+                            <p:commandButton value="Selecionar" class="selecionar" />
+                         </h:panelGrid>
+                       <h:panelGrid columns="3" cellpadding="5" >
+                            <p:outputLabel value="Cliente" for="cliente"  class="left3"/> 
+                        </h:panelGrid>
+                         <h:panelGrid columns="3">
+                             <p:inputText id="cliente" size="102" required="true" requiredMessage="Campo cliente preenchimento Obrigatório" class="left3"/>
+                            
+                         </h:panelGrid>
+                <h:panelGrid columns="7" cellpadding="3">
+                    <p:outputLabel value="Produto" for="produto" class="left3"/>
+                </h:panelGrid>
+                <h:panelGrid columns="5" cellpadding="1">
+                    <p:selectOneMenu id="produto" class="left3" style="width:540px" required="true" requiredMessage="Campo produto preenchimento Obrigatório">
+                                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/>  
+                          </p:selectOneMenu>
+                </h:panelGrid> 
+                <h:panelGrid columns="3" cellpadding="5" >
+                    <p:outputLabel value="Consultor de Vendas"  for="consultor"  class="left3"/> 
+                </h:panelGrid>
+                 <h:panelGrid columns="3">
+                     <p:inputText id="consultor" size="102"  class="left3" required="true" requiredMessage="Campo consultor de vendas preenchimento Obrigatório"/>
+
+                 </h:panelGrid>
+                  <h:panelGrid columns="6" cellpadding="5" >
+                    <p:outputLabel value="Data Venda" for="dataVenda"  class="left3" />
+                    <p:outputLabel value="Total Bruto" for="totalBruto"  class="left3"/>
+                    <p:outputLabel value="Valor Desconto" for="valorDesconto"  class="left1"/>
+                    <p:outputLabel value="Valor Juros" for="valorJuros"  class="left3"/>
+                    <p:outputLabel value="Total" for="total"  class="left1"/>
+                </h:panelGrid>
+                 <h:panelGrid columns="6">
+                    <p:calendar id="dataVenda"  pattern="dd/MM/yyyy" mask="true" size="11" maxlength="15" class="left3" required="true" requiredMessage="Campo data venda preenchimento Obrigatório">
+                         <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                    </p:calendar>
+                    <p:inputText id="totalBruto" size="10" styleClass="alinharCenter" class="valoentrada" required="true" requiredMessage="Campo total bruto preenchimento Obrigatório"/>
+                    <p:inputText id="valorDesconto" size="11" styleClass="alinharCenter" class="valorvenda"/>
+                    <p:inputText id="valorJuros" size="9" styleClass="alinharCenter" class="valoentrada"/>
+                    <p:inputText id="total" size="10" styleClass="alinharCenter" class="valorvenda"/>
+                 </h:panelGrid>          
+                        </p:tab>
+                        <p:tab title="Back Office" >
+                            <h:panelGrid columns="6" cellpadding="5" >
+                            <p:outputLabel value="Comissão Liquida" for="comissaoliq"  class="left3"/>
+                            <p:outputLabel value="Despesas Financeiras" for="despesasFinan"  class="left5"/>
+                            <p:outputLabel value="Comissão Funcionários" for="comssaoFunc"  class="left"/>
+                        </h:panelGrid>
+                         <h:panelGrid columns="6">
+                          <p:inputText id="comissaoliq" size="20"  class="left3"/>
+                            <p:inputText id="despesasFinan" size="20"  class="left"/>
+                            <p:inputText id="comssaoFunc" size="25"  class="left"/>
+                         </h:panelGrid>   
+                          <h:panelGrid columns="6" cellpadding="5" >
+                            <p:outputLabel value="Comissão Terceiros" for="comissaoter"  class="left3"/>
+                            <p:outputLabel value="Data Pagto Fornecedor" for="dataPagFor"  class="left5"/>
+                            <p:outputLabel value="Total" for="total2"  class="left"/>
+                        </h:panelGrid>
+                         <h:panelGrid columns="6">
+                          <p:inputText id="comissaoter" size="21"  class="left3"/>
+                           <p:calendar id="dataPagFor"  pattern="dd/MM/yyyy" mask="true" size="22" maxlength="15" class="left" />
+                            <p:inputText id="total2" size="22"  class="valorreceber"/>
+                         </h:panelGrid> 
+                         <h:panelGrid columns="3" cellpadding="5" >
+                            <p:outputLabel value="Nome do Fornecedor" for="nomeForne"  class="left3"/>
+                             <p:outputLabel value="Valor Pago pelo Fornecedor" for="valorForne"  class="leftt"/>
+                        </h:panelGrid>
+                         <h:panelGrid columns="3">
+                            <p:inputText id="nomeForne" size="60"  class="left3"/>
+                            <p:inputText id="valorForne" size="24"  class="valorreceber"/>
+                         </h:panelGrid>
+                        <h:panelGrid columns="3" cellpadding="5" >
+                             <p:outputLabel value="Líquido de Venda" for="liqVenda"  class="left10"/>
+                        </h:panelGrid>
+                         <h:panelGrid columns="3">
+                            <p:inputText id="liqVenda" size="15"  class="valorliq"/>
+                         </h:panelGrid>
+                        <h:panelGrid columns="3" cellpadding="5" >
+                            <p:outputLabel value="Observações" for="obs"  class="left3"/>
+                             <p:outputLabel value="Líquido Pagar/Receber" for="liqPagRec"  class="lado"/>
+                        </h:panelGrid>
+                         <h:panelGrid columns="3">
+                            <p:inputText id="obs" size="64"  class="left3"/>
+                            <p:inputText id="liqPagRec" size="20"  class="valorreceber"/>
+                         </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Forma de Recebimento">
+                            <p:dataTable id="contarPagar" var="contasPagar" value="#" rowStyleClass="tabela" class="tabelaRecebimento" 
+                            paginator="true" rows="10" style="margin-bottom:20px"> 
+                               <p:column headerText="Tipo Documento">
+                                   <h:outputText value="#" />
+                               </p:column>
+                               <p:column headerText="Data Vencimento" >
+                                   <h:outputText  >
+                                        <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                                   </h:outputText>
+                               </p:column>
+                               <p:column headerText="Nº Parcelas"  >
+                                   <h:outputText value="#"/>
+                               </p:column>
+                               <p:column headerText="Valor"  >
+                                   <h:outputText value="#"/>
+                               </p:column>
+                                <p:column  style="width:28px">
+                                 <p:commandButton  id="iconOnly" icon="ui-icon-trash" title="Excluir" >
+                                     <f:param name="id_vendas" />
+                                </p:commandButton>
+                                    </p:column>
+                           </p:dataTable>
+                              <p:commandButton value="Adicionar" icon=" ui-icon-plusthick" />
+                        </p:tab>
+                        <p:tab title="Nota Fiscal">
+                             <h:panelGrid columns="3" cellpadding="5" >
+                                <p:outputLabel value="Nome Completo" for="nomeComple"  class="left3"/> 
+                            </h:panelGrid>
+                             <h:panelGrid columns="3">
+                                <p:inputText id="nomeComple" size="103"  class="left3"/>
+
+                             </h:panelGrid>
+                            <h:panelGrid columns="3" cellpadding="5" >
+                                <p:outputLabel value="Endereço" for="endereco"  class="left3"/> 
+                            </h:panelGrid>
+                             <h:panelGrid columns="3">
+                                <p:inputText id="endereco" size="103"  class="left3"/>
+                             </h:panelGrid>
+                            
+                            <h:panelGrid columns="3" cellpadding="5" >
+                                <p:outputLabel value="Complemento" for="complemento"  class="left3"/> 
+                                <p:outputLabel value="Bairro" for="bairro"  class="left14"/> 
+                            </h:panelGrid>
+                             <h:panelGrid columns="3">
+                                <p:inputText id="complemento" size="55"  class="left3"/>
+                                <p:inputText id="bairro" size="29"  class="left"/>
+                             </h:panelGrid>
+                             <h:panelGrid columns="3" cellpadding="5">
+                                  <p:outputLabel value="Cidade" for="cidade" class="left3"/>
+                                <p:outputLabel value="Estado"  class="left15"/>
+                                <p:outputLabel value="CEP" for="cep" class="left2"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <p:inputText id="cidade"   size="22" class="left3"/>
+                           
+                                 <p:selectOneMenu  id="estado" class="left" style="width:180px">
+                                  <f:selectItem itemLabel="Selecione o Estado" itemValue="sn" noSelectionOption="true"/> 
+                                 <f:selectItem itemLabel="Acre" itemValue="AC" /> 
+                                 <f:selectItem itemLabel="Alagoas" itemValue="AL" /> 
+                                 <f:selectItem itemLabel="Amapá" itemValue="AP" />  
+                                 <f:selectItem itemLabel="Amazonas" itemValue="AM" />  
+                                <f:selectItem itemLabel="Bahia" itemValue="BA" />  
+                                <f:selectItem itemLabel="Ceará" itemValue="CE" />  
+                                <f:selectItem itemLabel="Distrito Federal" itemValue="DF" />  
+                                 <f:selectItem itemLabel="Espirito Santo" itemValue="ES" />  
+                                <f:selectItem itemLabel="Goiás" itemValue="GO" />  
+                                 <f:selectItem itemLabel="Maranhão" itemValue="MA" />  
+                                <f:selectItem itemLabel="Mato Grosso" itemValue="MT" />  
+                                <f:selectItem itemLabel="Mato Grosso do Sul" itemValue="MS" />  
+                                <f:selectItem itemLabel="Minas Gerais" itemValue="MG" />  
+                                 <f:selectItem itemLabel="Pará" itemValue="PA" />  
+                                 <f:selectItem itemLabel="Paraíba" itemValue="PB" />  
+                                 <f:selectItem itemLabel="Paraná" itemValue="PR" />  
+                                 <f:selectItem itemLabel="Pernambuco" itemValue="PE" />  
+                                 <f:selectItem itemLabel="Piauí" itemValue="PI" />  
+                                 <f:selectItem itemLabel="Rio de Janeiro" itemValue="RJ" />  
+                                 <f:selectItem itemLabel="Rio Grande do Norte" itemValue="RN" />  
+                                 <f:selectItem itemLabel="Rio Grande do Sul" itemValue="RS" />  
+                                 <f:selectItem itemLabel="Rondônia" itemValue="RO" />  
+                                 <f:selectItem itemLabel="Roraima" itemValue="RR" />  
+                                 <f:selectItem itemLabel="Santa Catarina" itemValue="SC" />  
+                                 <f:selectItem itemLabel="São Paulo" itemValue="SP" />  
+                                 <f:selectItem itemLabel="Sergipe" itemValue="SE" />  
+                                 <f:selectItem itemLabel="Tocantins" itemValue="TO" /> 
+                                   
+                                 </p:selectOneMenu>
+                            <p:inputMask id="cep"   size="9"  maxlength="9" class="left" mask="99999-999"/>
+             
+                            </h:panelGrid>
+                            <h:panelGrid columns="3" cellpadding="5" >
+                                <p:outputLabel value="CNPJ/CPF" for="cnpj"  class="left3"/> 
+                                <p:outputLabel value="I.E" for="ie"  class="lado"/> 
+                            </h:panelGrid>
+                             <h:panelGrid columns="3">
+                                <p:inputText id="cnpj" size="61"  class="left3"/>
+                                <p:inputText id="ie" size="23"  class="left"/>
+                             </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>  
+                  <p:commandButton value="Cadastrar" icon=" ui-icon-plusthick" class="cadastrar" actionListener="#{mensagem.saveMessagem}" update="growl" />
+                    <p:commandButton value="Importar" icon=" ui-icon-shuffle " class="pesquisar2" />
+                    <p:commandButton value="Cancelar" icon=" ui-icon-cancel " class="pesquisar2" action="#{vendasMB.cancelar()}" />
+                    <br></br>
+                    <br></br>
+
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+
+

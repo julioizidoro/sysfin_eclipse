@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="../../resources/css/cssteste.css" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body >
+
+        <h:form id="frmidCadconReceber" class="body2" style="font-size: 12px;background: #F0FFFF">
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <img src="resources/img/ajax-loader.gif" />
+            </p:dialog>
+
+            <title  >Editar Contas Receber</title>
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <br></br>
+            <p:outputLabel value="Unidade" style="margin-left: 10%"/>
+            <h:panelGrid columns="7">
+                <p:selectOneMenu id="idcbbunidade" value="#{cadContasReceberMB.cliente}" style="width: 500px;margin-left: 10%"
+                                 converter="ClienteConverter" filter="true" filterMatchMode="startsWith" panelStyle="width: 450px" >
+                    <f:selectItem itemLabel="Selecione" itemValue="0" noSelectionOption="true"/>
+                    <f:selectItems value="#{cadContasReceberMB.listaCliente}" var="clienteselecionado"  itemLabel="#{clienteselecionado.nomeFantasia}" itemValue="#{clienteselecionado}" />
+                    <f:attribute name="listaCliente" value="#{cadContasReceberMB.listaCliente}"/>
+                </p:selectOneMenu>
+            </h:panelGrid>
+            <br></br>
+            <p:outputLabel value="Plano de Contas" for="idplanoConta" style="margin-left: 10%"/> 
+            <p:outputLabel value="Conta" for="idconta" style="margin-left: 39%"/>
+
+            <h:panelGrid columns="2" cellpadding="3">
+                <p:selectOneMenu id="idplanoConta"  style="width:310px;margin-left: 15%"  value="#{cadContasReceberMB.planoContas}"
+                    converter="PlanoContasConverter" filter="true" filterMatchMode="startsWith" panelStyle="width:290px" >
+                    <f:selectItem itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+                    <f:selectItems value="#{cadContasReceberMB.listaPlanoContas}" var="planoContasSelecionado" itemLabel="#{planoContasSelecionado.descricao}" itemValue="#{planoContasSelecionado}"/>
+                    <f:attribute name="listaPlanoConta" value="#{cadContasReceberMB.listaPlanoContas}"/>
+                </p:selectOneMenu> 
+                <p:selectOneMenu id="idconta"  style="width:162px;margin-left: 10%"  value="#{cadContasReceberMB.banco}"
+                    converter="BancoConverter" filter="true" filterMatchMode="startsWith" panelStyle="width:150px" >
+                    <f:selectItem itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+                    <f:selectItems value="#{cadContasReceberMB.listaBanco}" var="bancoSelecionado" itemLabel="#{bancoSelecionado.nome}" itemValue="#{bancoSelecionado}"/>
+                    <f:attribute name="listaBanco" value="#{cadContasReceberMB.listaBanco}"/>
+                </p:selectOneMenu>    
+            </h:panelGrid>
+            <br></br>
+            <p:outputLabel value="Data Vencimento" for="dataVenc" style="margin-left: 10%"/> 
+            <p:outputLabel value="Nº do Documento" for="nDocumento" style="margin-left: 5%"/>
+            <p:outputLabel value="Nº de Parcelas" for="nParcelas" style="margin-left: 5%"/>
+            <p:outputLabel value="Valor R$" for="valor" style="margin-left: 7%"/>
+
+            <h:panelGrid columns="5" cellpadding="1">
+                <p:inputMask id="dataVenc" value="#{cadContasReceberMB.contasReceber.dataVencimento}" mask="99/99/9999" size="10" maxlength="15" style="margin-left: 35%" >
+                    <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                </p:inputMask>
+                <p:inputText id="nDocumento" size="10"  style="margin-left: 20%" value="#{cadContasReceberMB.contasReceber.numeroDocumento}"/>
+                <p:inputText id="nParcelas" size="10"  style="margin-left: 20%;text-align: right" value="#{cadContasReceberMB.contasReceber.numeroParcela}">
+                    <f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+                </p:inputText>
+                <p:inputText id="valor" size="10"  style="margin-left: 20%;text-align: right" value="#{cadContasReceberMB.contasReceber.valorParcela}">
+                   <f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2" />
+                </p:inputText>
+            </h:panelGrid> 
+            <br></br>
+            <p:outputLabel value="Nome do Cliente" for="nome"  style="margin-left: 10%"/>
+            <p:outputLabel value="Tipo de Documento" for="tipoDocumento"  style="margin-left: 38%"/>
+
+            <h:panelGrid columns="2">
+                <p:inputText id="nome" size="40"  style="margin-left: 16%" value="#{cadContasReceberMB.contasReceber.nomeCliente}"/>
+                <p:selectOneMenu id="tipoDocumento"  style="width:165px;margin-left: 10%" value="#{cadContasReceberMB.contasReceber.tipodocumento}">
+                    <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                    <f:selectItem itemLabel="Boleto" itemValue="Boleto" />  
+                    <f:selectItem itemLabel="Guia de Imposto" itemValue="Guia de Imposto" /> 
+                    <f:selectItem itemLabel="Holerite" itemValue="Holerite" />  
+                    <f:selectItem itemLabel="Nota Fiscal" itemValue="Nota Fiscal" />
+                    <f:selectItem itemLabel="Recibo" itemValue="Recibo" />  
+                    <f:selectItem itemLabel="Outros" itemValue="Outros" /> 
+                </p:selectOneMenu>
+
+            </h:panelGrid>            
+           
+            <p:commandLink title="Confirmar" style="margin-left: 72%;text-decoration: none" actionListener="#{mensagem.saveMessagem}"  action="#{cadContasReceberMB.salvar()}" >
+                <img src="../../resources/img/confirmarS.png" width="50" height="50"/>
+            </p:commandLink>
+            <p:commandLink title="Cancelar" style="margin-left: 2%;text-decoration: none" action="#{cadContasReceberMB.cancelar()}" >
+                <img src="../../resources/img/cancelarS.png" width="50" height="50"/>
+            </p:commandLink>
+            <br></br>
+            <br></br>
+
+        </h:form>
+    </h:body>
+
+</html>

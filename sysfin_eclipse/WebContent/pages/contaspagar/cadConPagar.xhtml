@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="../../resources/css/cssteste.css" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body > 
+        <h:form id="idFrmCadContasPagar" class="body2" style="font-size: 12px; background-color: #F0FFFF;">
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+                <img src="resources/img/ajax-loader.gif" />
+            </p:dialog>
+
+            <title  >Adicionar uma conta</title>
+
+            <br></br> 
+
+
+            
+                <p:outputLabel value="Upload de Arquivo" for="upload"  class="left3" style="margin-left: 10%;"/>
+                <p:outputLabel value="Upload de Arquivo 02" for="upload2"  class="leefft" style="margin-left: 32%;"/>
+            <br/>
+            <h:panelGrid columns="4">
+                <p:fileUpload id="upload" class="left3" fileUploadListener="#{cadContasPagarMB.upload01}" mode="advanced" update="@all"  oncomplete="popAprovar.hide();  #{meuBean.objetos}" 
+                              auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" style="width: 78%; margin-left: 25%;"/>                               
+                <p:growl id="messages" showDetail="true" />
+                <p:fileUpload id="upload2" fileUploadListener="#{cadContasPagarMB.upload02}" mode="advanced" update="@all"  oncomplete="popAprovar.hide();  #{meuBean.objetos}" 
+                              auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" class="left9" style="width: 65%; margin-left: 38%;">
+                </p:fileUpload>
+                <p:growl id="message2" showDetail="true" />
+
+            </h:panelGrid>
+            <h:panelGrid>
+                <p:outputLabel value="Unidade" for="cliente"  class="left3" style="margin-left: 10%"/>
+                <p:selectOneMenu id="cliente"  style="width: 505px;margin-left: 10%"  value="#{cadContasPagarMB.cliente}" converter="ClienteConverter"
+                             filter="true" filterMatchMode="startsWith" panelStyle="width:180px">
+                    <f:selectItem  itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+                    <f:selectItems value="#{cadContasPagarMB.listaCliente}" var="clienteselecionado" itemLabel="#{clienteselecionado.nomeFantasia}" itemValue="#{clienteselecionado}"/>
+                    <f:attribute name="listaCliente" value="#{cadContasPagarMB.listaCliente}"/>
+                </p:selectOneMenu> 
+            </h:panelGrid>
+            <p:outputLabel value="Fornecedor" for="fornecedor"  class="left3" style="margin-left: 9.5%;"/>
+                <p:outputLabel value="Nº do Documento" for="nDocumento"  class="left2" style="margin-left: 18.5%"/>
+                <p:outputLabel value="Tipo de Documento" for="tipoDocumento"  class="left3" style="margin-left: 3.5%"  />   
+            
+            <h:panelGrid columns="3">
+                <p:inputText id="fornecedor" size="20"  class="left3" value="#{cadContasPagarMB.contaPagar.fornecedor}" style="margin-left: 24%;"/>
+                <p:inputText id="nDocumento" size="13"  class="left4" value="#{cadContasPagarMB.contaPagar.numeroDocumento}" style="margin-left: 5px;"/>
+                <p:selectOneMenu id="tipoDocumento" class="left3" style="width:195px; margin-left: 5px;"  value="#{cadContasPagarMB.contaPagar.tipoDocumento}">
+                    <f:selectItem itemLabel="Selecione" itemValue="sn" noSelectionOption="true"/> 
+                    <f:selectItem itemLabel="Boleto" itemValue="Boleto" />  
+                    <f:selectItem itemLabel="Guia de Imposto" itemValue="Guia de Imposto" /> 
+                    <f:selectItem itemLabel="Holerite" itemValue="Holerite" />  
+                    <f:selectItem itemLabel="Nota Fiscal" itemValue="Nota Fiscal" />
+                    <f:selectItem itemLabel="Recibo" itemValue="Recibo" />  
+                    <f:selectItem itemLabel="Outros" itemValue="Outros" /> 
+                </p:selectOneMenu>
+            </h:panelGrid>
+            
+                <p:outputLabel value="Data Envio" for="dataEnv" class="left3" style="margin-left: 9%;"/> 
+                <p:outputLabel value="Data Vencimento" for="dataVenc" class="left1" style="margin-left: 11.8%;"/>
+                <p:outputLabel value="Data Agendamento" for="dataAgen" class="left4" style="margin-left: 5%;"/>
+                <p:outputLabel value="Data Compensação" for="dataComp" class="left1" style="margin-left: 2.5%;"/>
+            
+                <br/>
+                <p:inputMask id="dataEnv" mask="99/99/9999" size="13"  class="left3" value="#{cadContasPagarMB.contaPagar.dataEnvio}"   style="margin-left: 9%;">
+                    <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                </p:inputMask>
+                <p:inputMask id="dataVenc"   mask="99/99/9999" size="12" maxlength="14" class="left4"  value="#{cadContasPagarMB.contaPagar.dataVencimento}" style="margin-left: 2%;">
+                    <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                </p:inputMask>
+                <p:inputMask id="dataAgen"   mask="99/99/9999" size="12" maxlength="15" class="left4" value="#{cadContasPagarMB.contaPagar.dataAgendamento}" style="margin-left: 2%;">
+                    <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                </p:inputMask>
+                <p:inputMask id="dataComp"  mask="99/99/9999" size="12" maxlength="15" class="left1" value="#{cadContasPagarMB.contaPagar.dataCompensacao}" style="margin-left: 2%;">
+                    <f:convertDateTime   pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                </p:inputMask>
+                <br/>
+            
+                <p:outputLabel value="Plano de Contas" for="idPlanoConta" class="left3" style="margin-left: 9%;"/> 
+                <p:outputLabel value="Valor R$" for="valor" class="leftvalor" style="margin-left:42%;"/>
+            
+            <h:panelGrid columns="2" cellpadding="3">
+                <p:selectOneMenu id="idPlanoConta" class="left3" style="width:348px; margin-left: 13%;"  value="#{cadContasPagarMB.planoContas}" converter="PlanoContasConverter">
+                    <f:selectItem itemLabel="Selecione" itemValue="0" noSelectionOption="true"/> 
+                    <f:selectItems value="#{cadContasPagarMB.listaPlanoContas}" var="planoContaselecionado" itemLabel="#{planoContaselecionado.descricao}" itemValue="#{planoContaselecionado}"/>
+                    <f:attribute name="listaPlanoConta" value="#{cadContasPagarMB.listaPlanoContas}"/>
+                </p:selectOneMenu>                   
+                <p:inputText id="valor" size="17"  class="valorr"  value="#{cadContasPagarMB.contaPagar.valor}"/>
+            </h:panelGrid>
+            
+                <p:outputLabel value="Descrição" for="descricao" class="left3" style="margin-left: 9%;"/> 
+                <br/>
+                <p:inputTextarea rows="3" cols="68" id="descricao"  class="left3"  value="#{cadContasPagarMB.contaPagar.descricao}" style="margin-left: 9%;"/>
+          
+            
+                <p:outputLabel value="Conta" for="idconta" class="left3" style="margin-left: 9%;"/> 
+                <p:outputLabel value="Forma de Pagamento" for="formaPaga" class="left2" style="margin-left: 25%;"/>
+                <p:outputLabel value="Competência" for="competencia" class="left5" style="margin-left: 11%;"/> 
+            
+            <h:panelGrid columns="3">
+                <p:selectOneMenu id="idconta" class="left3" style="width:185px; margin-left: 22%;"  value="#{cadContasPagarMB.banco}"  converter="BancoConverter"
+                                 filter="true" filterMatchMode="startsWith" panelStyle="width:150px">
+                    <f:selectItem itemLabel="Selecione" itemValue="0" noSelectionOption="true" /> 
+                    <f:selectItems value="#{cadContasPagarMB.listaBanco}" var="bancoSelecionado" itemLabel="#{bancoSelecionado.nome}" itemValue="#{bancoSelecionado}"/>
+                    <f:attribute name="listaBanco" value="#{cadContasPagarMB.listaBanco}"/>
+                </p:selectOneMenu>
+                <p:selectOneMenu id="formaPaga" class="left5" style="width:195px"  value="#{cadContasPagarMB.contaPagar.formaPagamento}">
+                    <f:selectItem itemLabel="Selecione" itemValue="sn" noSelectionOption="true"/> 
+                    <f:selectItem itemLabel="Cartão" itemValue="Cartão" />  
+                    <f:selectItem itemLabel="Débito em Conta" itemValue="debito em conta" /> 
+                    <f:selectItem itemLabel="Boleto" itemValue="Boleto" />  
+                    <f:selectItem itemLabel="Dinheiro" itemValue="Dinheiro" />
+                    <f:selectItem itemLabel="Cheque" itemValue="Cheque" />  
+                    <f:selectItem itemLabel="Depósito" itemValue="Depósito" /> 
+                </p:selectOneMenu>
+                <p:inputMask id="competencia" label="competencia" value="#{cadContasPagarMB.contaPagar.competencia}" size="12" mask="99/9999"  class="left1">
+                </p:inputMask>
+            </h:panelGrid>     
+                <p:commandLink title="Confirmar" style="margin-left: 72%;text-decoration: none" actionListener="#{mensagem.saveMessagem}"  action="#{cadContasPagarMB.salvar()}" >
+                    <img src="../../resources/img/confirmarS.png" width="50" height="50"/>
+                </p:commandLink>
+                <p:commandLink title="Cancelar" style="margin-left: 2%;text-decoration: none" action="#{cadContasPagarMB.cancelar()}" >
+                    <img src="../../resources/img/cancelarS.png" width="50" height="50"/>
+                </p:commandLink>
+                <br></br>
+                <br></br>
+        </h:form>
+    </h:body>
+</html>
+
+

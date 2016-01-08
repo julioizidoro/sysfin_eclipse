@@ -1,0 +1,54 @@
+<h:form xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html">
+
+    <div id="tudo">
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+        
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+            <img src="../../resources/img/ajax-loader.gif" />
+        </p:dialog>
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <tr>
+            <td><table aling="center" width="00" border="0" cellpadding="0" cellspacing="0"> 
+                    <tr>
+                        <td><img src="../../resources/img/logo.png" width="400" height="140" class="logo"/>
+                            <h:panelGrid columns="2" cellpadding="1" class="usuariologado">
+                                <p:outputLabel value="Usuário:"  class="tabelaRecebimento"/> 
+                                <p:outputLabel value="#{UsuarioLogadoBean.usuario.nome}" /> 
+                                <p:outputLabel value="Unidade:"  class="tabelaRecebimento"/> 
+                                <p:outputLabel value="#{UsuarioLogadoBean.nomeCliente}"/> 
+                            </h:panelGrid><br></br><br></br></td>
+                    </tr>
+                </table></td></tr><br></br>
+        <p:menubar class="menu">
+            <p:submenu label="Cadastro" >
+                <p:menuitem class="submenu" value="Cliente" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Banco" action="#{menuMB.banco()}" update="growl"/>
+                <p:menuitem class="submenu" value="Tipo Plano de Contas" action="#{menuMB.tipoPlanoContas()}" update="growl"/>
+                <p:menuitem class="submenu" value="Plano de Contas" action="#{menuMB.planoContas()}" update="growl"/>
+                <p:menuitem class="submenu" value="Produto" action="#{menuMB.produto()}" update="growl"/>
+                <p:menuitem class="submenu" value="TIpo de Usuário" action="#{menuMB.usuario()}" update="growl"/>
+            </p:submenu>
+
+            <p:submenu label="Relatórios" >
+                <p:menuitem class="submenu" value="Contas a Pagar" action="#{menuMB.relatorioContasPagar()}" update="growl"/>
+                <p:menuitem class="submenu" value="Contas Receber" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Conciliação Bancária" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Fluxo de Caixa" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Pagamentos" action="#{menuMB.cliente()}" update="growl"/>
+                <p:menuitem class="submenu" value="Vendas" action="#{menuMB.relatorioVenda()}" update="growl"/>
+            </p:submenu>
+        </p:menubar>
+        
+        <p:stack  expanded="false" icon="../../resources/img/stack.png">
+            <p:menuitem value="Contas a Pagar" icon="../../resources/img/finpagar.png" action="#{menuMB.contasPagar()}"  update="growl"/>
+            <p:menuitem value="Contas a Receber" icon="../../resources/img/finreceber.png" action="#{menuMB.contasReceber}" update="growl"/>
+            <p:menuitem value="Outros Lançamentos" icon="../../resources/img/finbanco.png" action="#{menuMB.outrosLancamento}" update="growl"/>
+            <p:menuitem value="Vendas" icon="../../resources/img/cashier.png" action="#{menuMB.vendas}" update="growl"/>
+            <p:menuitem value="Inicio" icon="../../resources/img/inicio_1.jpg" action="#{menuMB.home}" update="growl"/>
+        </p:stack>
+        <br>  </br>
+        <br>  </br>
+    </div>
+</h:form>

@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <div id="centro">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br></br>
+                    <legend id="iUsu" ><b>Cadastro Tipo de Acesso</b></legend>
+                    <h:panelGrid columns="2" cellpadding="5" >
+                        <p:outputLabel value="Tipo de Acesso" for="tipoacesso"  class="left" />
+                    </h:panelGrid>
+                    <h:panelGrid columns="2">
+                        <p:inputText id="tipoacesso" size="45"  class="left"  value="#{TipoAcessoMB.tipoacesso.descricao}" />
+                    </h:panelGrid>
+                    <p:tabView class="cadastroContasPagar">
+                        <p:tab title="Cadastro" >
+                            <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >
+                                <h:outputText value="Cliente" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.cliente}" />
+                                <h:outputText value="Cadastro" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.icliente}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.acliente}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.ecliente}" />
+                            </h:panelGrid>
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >
+                                <h:outputText value="Banco" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.banco}" />
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.ibanco}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.abanco}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.ebanco}" />
+                           </h:panelGrid>
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >
+                                <h:outputText value="Tipo Plano de Contas" class=""/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.tipoplanocontas}" class="box"/>
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.itipoplanocontas}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.atipoplanocontas}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.etipoplanocontas}" />
+                            </h:panelGrid>
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >
+                                <h:outputText value="Plano de Contas" class=""/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.planocontas}" />
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.iplanocontas}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.aplanocontas}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.eplanocontas}" />
+                            </h:panelGrid>
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >
+                                <h:outputText value="Produto" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.produto}" class="box2" />
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.iproduto}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.aproduto}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.eproduto}" />
+                           </h:panelGrid>    
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >    
+                                <h:outputText value="Vendas" class="left" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.vendas}" class="box2" />
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.ivendas}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.avendas}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.evendas}" />
+                           </h:panelGrid>     
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >    
+                                <h:outputText value="Outros Lançamentos" class=""/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.outroslancamentos}" class="box" />
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.ioutroslancamentos}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.aoutroslancamentos}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.eoutroslancamentos}" />
+                           </h:panelGrid>    
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >    
+                                <h:outputText value="Contas a Receber" class=""/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.contasreceber}" class="box2" />
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.icontasreceber}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.acontasreceber}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.econtasreceber}" />
+                           </h:panelGrid>    
+                            <br></br>
+                           <h:panelGrid columns="8" style="border:50px;" class="panelgrid" cellpadding="5" >    
+                                <h:outputText value="Contas a Pagar" class=""/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.contaspagar}" class="box3"/>
+                                <h:outputText value="Cadastro"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.icontaspagar}" />
+                                <h:outputText value="Editar" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.acontaspargar}" />
+                                <h:outputText value="Excluir" />
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.econtaspargar}" />
+                          </h:panelGrid>  
+                        </p:tab>
+                   <p:tab title="Relatórios" >
+                           <h:panelGrid columns="4" style="border:50px;" class="panelgrid" cellpadding="5" >   
+                                <h:outputText value="Relatório Contas a Receber" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.rcontasreceber}" />
+                                <h:outputText value="Relatório Contas a Pagar"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.rpagar}" />
+                           </h:panelGrid>
+                       <br></br>
+                           <h:panelGrid columns="4" style="border:50px;" class="panelgrid" cellpadding="5" >   
+                                <h:outputText value="Relatório Conciliação Bancária" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.rconciliacao}" class="box4"/>
+                                <h:outputText value="Relatório Fluxo de Caixa"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.rfluxo}" />
+                           </h:panelGrid>
+                       <br></br>
+                           <h:panelGrid columns="4" style="border:50px;" class="panelgrid" cellpadding="5" >   
+                                <h:outputText value="Relatório Pagamentos" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.rpagamentos}" />
+                                <h:outputText value="Relatório Vendas"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.rvendas}" />
+                          </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Movimentos" >
+                            <h:panelGrid columns="4" style="border:50px;" class="panelgrid" cellpadding="5" >  
+                                <h:outputText value="Liberar Contas a Pagar" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.lcontaspargar}" />
+                                <h:outputText value="Autorizar Contas a Pagar"  class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.autcontaspargar}" />
+                                <h:outputText value="Arquivo Contas a Pagar" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.arqcontaspargar}" />
+                                <h:outputText value="Usuário Contas a Pagar" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.ucontaspargar}" />
+                            </h:panelGrid>
+                                <br></br>
+                            <h:panelGrid columns="6" style="border:50px;" class="panelgrid" cellpadding="5" >   
+                                <h:outputText value="Forma Venda" class="left"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.fvendas}" />
+                                <h:outputText value="Contas Venda"  class="left3"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.cvendas}" />
+                                <h:outputText value="Parcelar Venda" class="left4"/>
+                                <p:selectBooleanCheckbox value="#{TipoAcessoMB.tipoacesso.acesso.pvendas}" />
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>  
+                    <p:commandButton value="Confirmar" icon=" ui-icon-plusthick" class="cadastrar" action="#{TipoAcessoMB.salvar()}" actionListener="#{mensagem.saveMessagem}" update="growl" />
+                    <p:commandButton value="Cancelar" icon="ui-icon-closethick" class="pesquisar2" action="#{TipoAcessoMB.cancelar()}"  />
+                    <br></br>
+                    <br></br>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
