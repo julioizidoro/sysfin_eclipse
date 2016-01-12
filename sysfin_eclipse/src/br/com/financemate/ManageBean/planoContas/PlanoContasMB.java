@@ -32,7 +32,7 @@ import org.primefaces.event.SelectEvent;
  *
  * @author Kamila
  */
-@Named("planoContasMB")
+@Named("PlanoContasMB")
 @ViewScoped
 public class PlanoContasMB implements Serializable {
 

@@ -20,7 +20,7 @@
                                                  disabled="#{contasReceberMB.verCliente}">
                                     <f:selectItem itemLabel="Unidade" itemValue="0" noSelectionOption="true"/>
                                     <f:selectItems value="#{contasReceberMB.listaCliente}" var="clienteselecionado"  itemLabel="#{clienteselecionado.nomeFantasia}" itemValue="#{clienteselecionado}" />
-                                    <f:attribute name="listaCliente" value="#{contasReceberMB.listaCliente}"/>
+                                    <f:attribute name="listaCliente" value="#{contasReceberMB.li}"/>
                                 </p:selectOneMenu>
 
                                 <p:calendar id="dataIni" value="#{contasReceberMB.dataInicial}"  pattern="dd/MM/yyyy" mask="true" size="10"  maxlength="10" class="tabelaRecebimento" style="margin-left: 40%" placeholder="Data Inicial">

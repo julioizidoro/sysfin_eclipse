@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::index.xhtml" NAME="output"
+    PATH="index.xhtml" TARGET="rules:index.xhtml" TITLE="index" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:1" PATH="*" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:1" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principal::principal.xhtml" NAME="output"
+    PATH="principal.xhtml" TARGET="rules:principal.xhtml"
+    TITLE="principal" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:2" PATH="*" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:2" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consCliente::#pages#cliente#consCliente.xhtml" NAME="output"
+    PATH="/pages/cliente/consCliente.xhtml"
+    TARGET="rules:#pages#cliente#consCliente.xhtml" TITLE="consCliente" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:3" PATH="*" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:3" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consConReceber::#pages#contasreceber#consConReceber.xhtml"
+    NAME="output" PATH="/pages/contasreceber/consConReceber.xhtml"
+    TARGET="rules:#pages#contasreceber#consConReceber.xhtml"
+    TITLE="consConReceber" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:4" PATH="*" SHAPE="32,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:4" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consConPagar::#pages#contaspagar#consConPagar.xhtml"
+    NAME="output" PATH="/pages/contaspagar/consConPagar.xhtml"
+    TARGET="rules:#pages#contaspagar#consConPagar.xhtml"
+    TITLE="consConPagar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:5" PATH="*" SHAPE="32,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:5" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="relContasPagar::#pages#contaspagar#relContasPagar.xhtml"
+    NAME="output" PATH="/pages/contaspagar/relContasPagar.xhtml"
+    TARGET="rules:#pages#contaspagar#relContasPagar.xhtml"
+    TITLE="relContasPagar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:6" PATH="*" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:6" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="selecionarUnidade::#pages#cliente#selecionarUnidade.xhtml"
+    NAME="output" PATH="/pages/cliente/selecionarUnidade.xhtml"
+    TARGET="rules:#pages#cliente#selecionarUnidade.xhtml"
+    TITLE="selecionarUnidade" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:7" PATH="*" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:7" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consOutrosLancamentos::#pages#lancamentos#consOutrosLancamentos.xhtml"
+    NAME="output" PATH="/pages/lancamentos/consOutrosLancamentos.xhtml"
+    TARGET="rules:#pages#lancamentos#consOutrosLancamentos.xhtml"
+    TITLE="consOutrosLancamentos" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:8" PATH="*" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:8" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consPlanoConta::#pages#planocontas#consPlanoConta.xhtml"
+    NAME="output" PATH="/pages/planocontas/consPlanoConta.xhtml"
+    TARGET="rules:#pages#planocontas#consPlanoConta.xhtml"
+    TITLE="consPlanoConta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:9" PATH="*" SHAPE="32,1025,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:9" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="consBanco::#pages#banco#consBanco.xhtml"
+    NAME="output" PATH="/pages/banco/consBanco.xhtml"
+    TARGET="rules:#pages#banco#consBanco.xhtml" TITLE="consBanco" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:10" PATH="*" SHAPE="32,1137,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:10" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consProduto::#pages#produtos#consProduto.xhtml" NAME="output"
+    PATH="/pages/produtos/consProduto.xhtml"
+    TARGET="rules:#pages#produtos#consProduto.xhtml" TITLE="consProduto" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:11" PATH="*" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:11" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consTipoPlanoConta::#pages#tipoplanocontas#consTipoPlanoConta.xhtml"
+    NAME="output" PATH="/pages/tipoplanocontas/consTipoPlanoConta.xhtml"
+    TARGET="rules:#pages#tipoplanocontas#consTipoPlanoConta.xhtml"
+    TITLE="consTipoPlanoConta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:12" PATH="*" SHAPE="32,1361,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:12" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consTipoUsuario::#pages#usuario#consTipoUsuario.xhtml"
+    NAME="output" PATH="/pages/usuario/consTipoUsuario.xhtml"
+    TARGET="rules:#pages#usuario#consTipoUsuario.xhtml"
+    TITLE="consTipoUsuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:13" PATH="*" SHAPE="32,1473,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:13" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="consVendas::#pages#vendas#consVendas.xhtml"
+    NAME="output" PATH="/pages/vendas/consVendas.xhtml"
+    TARGET="rules:#pages#vendas#consVendas.xhtml" TITLE="consVendas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:14" PATH="*" SHAPE="32,1585,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:14" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="relVendas::#pages#vendas#relVendas.xhtml"
+    NAME="output" PATH="/pages/vendas/relVendas.xhtml"
+    TARGET="rules:#pages#vendas#relVendas.xhtml" TITLE="relVendas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#banco#consBanco.xhtml"
+  PATH="/pages/banco/consBanco.xhtml" SHAPE="240,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:index.xhtml" PATH="index.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#planocontas#consPlanoConta.xhtml"
+  PATH="/pages/planocontas/consPlanoConta.xhtml" SHAPE="240,929,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#lancamentos#consOutrosLancamentos.xhtml"
+  PATH="/pages/lancamentos/consOutrosLancamentos.xhtml"
+  SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#contaspagar#relContasPagar.xhtml"
+  PATH="/pages/contaspagar/relContasPagar.xhtml" SHAPE="240,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#contaspagar#consConPagar.xhtml"
+  PATH="/pages/contaspagar/consConPagar.xhtml" SHAPE="240,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#tipoplanocontas#consTipoPlanoConta.xhtml"
+  PATH="/pages/tipoplanocontas/consTipoPlanoConta.xhtml"
+  SHAPE="240,1265,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:principal.xhtml" PATH="principal.xhtml"
+  SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cliente#consCliente.xhtml"
+  PATH="/pages/cliente/consCliente.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#vendas#consVendas.xhtml"
+  PATH="/pages/vendas/consVendas.xhtml" SHAPE="240,1489,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#vendas#relVendas.xhtml"
+  PATH="/pages/vendas/relVendas.xhtml" SHAPE="240,1601,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cliente#selecionarUnidade.xhtml"
+  PATH="/pages/cliente/selecionarUnidade.xhtml" SHAPE="240,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#contasreceber#consConReceber.xhtml"
+  PATH="/pages/contasreceber/consConReceber.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#produtos#consProduto.xhtml"
+  PATH="/pages/produtos/consProduto.xhtml" SHAPE="240,1153,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#usuario#consTipoUsuario.xhtml"
+  PATH="/pages/usuario/consTipoUsuario.xhtml" SHAPE="240,1377,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

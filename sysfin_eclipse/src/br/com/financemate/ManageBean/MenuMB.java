@@ -8,6 +8,8 @@ package br.com.financemate.ManageBean;
 import br.com.financemate.ManageBean.cadastro.cliente.ClienteMB;
 import br.com.financemate.model.Cliente;
 import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -26,6 +28,11 @@ public class MenuMB implements Serializable{
     @Inject
     private UsuarioLogadoBean usuarioLogadoBean;
     @Inject ClienteMB clienteMB;
+    
+    @PostConstruct
+    public void init() {
+       getUsuarioLogadoBean();
+    }
 
     public UsuarioLogadoBean getUsuarioLogadoBean() {
         return usuarioLogadoBean;
@@ -139,6 +146,7 @@ public class MenuMB implements Serializable{
     } 
     
     public String cliente(){
+    		
         if (usuarioLogadoBean.getUsuario().getTipoacesso().getAcesso().getCliente()){
             clienteMB.setCliente(new Cliente());
             return "consCliente";
